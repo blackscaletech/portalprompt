@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.blackscale.portal-prompt",
+  "name": "Portal Prompt",
+  "version": "1.0.0",
+  "author": "Blackscale",
+  "license": "MIT",
+  "description": "Shows a small bar alert when Wi-Fi needs a captive-portal login.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Portal Prompt",
+    "description": "Open a captive-portal login page when NetworkManager reports limited connectivity.",
+    "category": "Network",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "loginUrl": "http://example.com/"
+    },
+    "schema": [
+      {
+        "key": "loginUrl",
+        "type": "string",
+        "label": "Login trigger URL",
+        "defaultValue": "http://example.com/",
+        "description": "Plain-HTTP page opened to trigger the network's captive-portal redirect. Non-HTTP values fall back to example.com."
+      }
+    ]
+  }
+}
