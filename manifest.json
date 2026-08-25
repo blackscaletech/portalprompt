@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "io.github.blackscale.portal-prompt",
+  "id": "io.github.blackscaletech.portal-prompt",
   "name": "Portal Prompt",
   "version": "1.0.0",
-  "author": "Blackscale",
+  "author": "Blackscale Tech",
   "license": "MIT",
   "description": "Shows a small bar alert when Wi-Fi needs a captive-portal login.",
   "kinds": [

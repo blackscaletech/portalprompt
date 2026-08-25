@@ -6,7 +6,7 @@ import qs.Ui
 
 BarWidget {
   id: root
-  moduleName: "io.github.blackscale.portal-prompt"
+  moduleName: "io.github.blackscaletech.portal-prompt"
 
   property string connectivity: "unknown"
   property bool initialCheckPending: true
@@ -80,7 +80,7 @@ BarWidget {
   }
 
   IpcHandler {
-    target: "io.github.blackscale.portal-prompt"
+    target: "io.github.blackscaletech.portal-prompt"
 
     function open(): void { root.openLoginPage() }
     function refresh(): void { root.refresh(true) }
