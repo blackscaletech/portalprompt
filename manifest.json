@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "author": "Blackscale Tech",
   "license": "MIT",
-  "description": "Shows a small bar alert when Wi-Fi needs a captive-portal login.",
+  "description": "Shows a bar alert when NetworkManager detects a captive portal or limited connectivity.",
   "kinds": [
     "bar-widget"
   ],
@@ -14,7 +14,7 @@
   },
   "barWidget": {
     "displayName": "Portal Prompt",
-    "description": "Open a captive-portal login page when NetworkManager reports limited connectivity.",
+    "description": "Open a browser sign-in page when NetworkManager reports a portal or limited connectivity.",
     "category": "Network",
     "allowMultiple": false,
     "defaultSection": "right",

@@ -1,5 +1,4 @@
 import QtQuick
-import Quickshell
 import Quickshell.Io
 import qs.Commons
 import qs.Ui
@@ -9,16 +8,11 @@ BarWidget {
   moduleName: "io.github.blackscaletech.portal-prompt"
 
   property string connectivity: "unknown"
-  property bool initialCheckPending: true
-
-  readonly property bool needsAttention:
-    connectivity === "portal" || connectivity === "limited"
+  readonly property bool needsAttention: connectivity === "portal" || connectivity === "limited"
 
   readonly property string loginUrl: {
     var candidate = String(setting("loginUrl", "http://example.com/")).trim()
-    return candidate.indexOf("http://") === 0
-      ? candidate
-      : "http://example.com/"
+    return /^http:\/\/\S{1,2048}$/i.test(candidate) ? candidate : "http://example.com/"
   }
 
   readonly property string statusText: connectivity === "portal"
@@ -27,8 +21,7 @@ BarWidget {
 
   function applyStatus(output) {
     var value = String(output || "").trim().toLowerCase()
-    var known = ["none", "portal", "limited", "full", "unknown"]
-    connectivity = known.indexOf(value) >= 0 ? value : "unknown"
+    connectivity = /^(none|portal|limited|full|unknown)$/.test(value) ? value : "unknown"
   }
 
   function refresh(forceCheck) {
@@ -40,15 +33,12 @@ BarWidget {
     connectivityProbe.running = true
   }
 
-  function openLoginPage() {
-    if (openPage.running) return
-    openPage.command = ["xdg-open", loginUrl]
-    openPage.running = true
-  }
+  function openLoginPage() { Util.execArgv(["xdg-open", loginUrl]) }
 
   visible: needsAttention
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
+  Component.onCompleted: refresh(true)
 
   Process {
     id: connectivityProbe
@@ -64,26 +54,11 @@ BarWidget {
     }
   }
 
-  Process {
-    id: openPage
-  }
-
   Timer {
     interval: 30000
     running: true
     repeat: true
-    triggeredOnStart: true
-    onTriggered: {
-      root.refresh(root.initialCheckPending)
-      root.initialCheckPending = false
-    }
-  }
-
-  IpcHandler {
-    target: "io.github.blackscaletech.portal-prompt"
-
-    function open(): void { root.openLoginPage() }
-    function refresh(): void { root.refresh(true) }
+    onTriggered: root.refresh(false)
   }
 
   BarIconButton {
@@ -93,6 +68,7 @@ BarWidget {
     text: "\uf071"
     slotSize: Style.bar.statusSlot
     fontSize: Style.font.caption
+    active: true
     tooltipText: root.statusText + "\nLeft-click: open login page\nRight-click: recheck"
 
     onPressed: function(buttonCode) {
