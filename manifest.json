@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "io.github.blackscaletech.portal-prompt",
-  "name": "Portal Prompt",
+  "id": "io.github.blackscaletech.portalprompt",
+  "name": "PortalPrompt",
   "version": "1.0.0",
   "author": "Blackscale Tech",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "Portal Prompt",
+    "displayName": "PortalPrompt",
     "description": "Open a browser sign-in page when NetworkManager reports a portal or limited connectivity.",
     "category": "Network",
     "allowMultiple": false,

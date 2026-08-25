@@ -1,10 +1,10 @@
-# Portal Prompt
+# PortalPrompt
 
 An [Omarchy](https://omarchy.org/) Quattro bar widget that shows when NetworkManager reports a captive portal or limited connectivity, then opens a browser sign-in page.
 
-![Portal Prompt showing a captive-portal warning in the Omarchy bar](preview.png)
+![PortalPrompt showing a captive-portal warning in the Omarchy bar](preview.png)
 
-Portal Prompt stays hidden while connectivity is normal. When NetworkManager reports `portal` or `limited`:
+PortalPrompt stays hidden while connectivity is normal. When NetworkManager reports `portal` or `limited`:
 
 - **Left-click** opens the sign-in page.
 - **Right-click** rechecks connectivity.
@@ -12,7 +12,7 @@ Portal Prompt stays hidden while connectivity is normal. When NetworkManager rep
 ## Install
 
 ```bash
-omarchy plugin add https://github.com/blackscaletech/portal-prompt.git --enable
+omarchy plugin add https://github.com/blackscaletech/portalprompt.git --enable
 ```
 
 The widget is added to the right side of the bar. Its optional `loginUrl` setting defaults to `http://example.com/`; plain HTTP allows the network to redirect the browser to its portal.
@@ -20,7 +20,7 @@ The widget is added to the right side of the bar. Its optional `loginUrl` settin
 ## Remove
 
 ```bash
-omarchy plugin remove io.github.blackscaletech.portal-prompt
+omarchy plugin remove io.github.blackscaletech.portalprompt
 ```
 
 ## Requirements
@@ -30,7 +30,7 @@ omarchy plugin remove io.github.blackscaletech.portal-prompt
 
 ## Security and privacy
 
-Portal Prompt runs `nmcli` for connectivity status and opens one validated HTTP URL with `xdg-open`. It requests no privileges and reads no credentials. It stores no data and includes no telemetry or downloaded dependencies.
+PortalPrompt runs `nmcli` for connectivity status and opens one validated HTTP URL with `xdg-open`. It requests no privileges and reads no credentials. It stores no data and includes no telemetry or downloaded dependencies.
 
 ## License
 

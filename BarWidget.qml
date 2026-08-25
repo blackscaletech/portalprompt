@@ -5,7 +5,7 @@ import qs.Ui
 
 BarWidget {
   id: root
-  moduleName: "io.github.blackscaletech.portal-prompt"
+  moduleName: "io.github.blackscaletech.portalprompt"
 
   property string connectivity: "unknown"
   readonly property bool needsAttention: connectivity === "portal" || connectivity === "limited"
